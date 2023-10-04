@@ -34,13 +34,15 @@ type Process interface {
 
 // ProcessInfo contains basic stats about a process
 type ProcessInfo struct {
-	Name      string    `json:"name"`
-	PID       int       `json:"pid"`
-	PPID      int       `json:"ppid"`
-	CWD       string    `json:"cwd"`
-	Exe       string    `json:"exe"`
-	Args      []string  `json:"args"`
-	StartTime time.Time `json:"start_time"`
+	Name            string    `json:"name"`
+	PID             int       `json:"pid"`
+	PPID            int       `json:"ppid"`
+	SessionLeaderID int       `json:"session_leader_id"`
+	GroupLeaderID   int       `json:"group_leader_id"`
+	CWD             string    `json:"cwd"`
+	Exe             string    `json:"exe"`
+	Args            []string  `json:"args"`
+	StartTime       time.Time `json:"start_time"`
 }
 
 // UserInfo contains information about the UID and GID
