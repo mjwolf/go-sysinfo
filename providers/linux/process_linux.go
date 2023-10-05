@@ -132,15 +132,17 @@ func (p *process) Info() (types.ProcessInfo, error) {
 	}
 
 	p.info = &types.ProcessInfo{
-		Name:            stat.Comm,
-		PID:             p.PID(),
-		PPID:            stat.PPID,
-		SessionLeaderID: stat.Session,
-		GroupLeaderID:   stat.PGRP,
-		CWD:             cwd,
-		Exe:             exe,
-		Args:            args,
-		StartTime:       bootTime.Add(ticksToDuration(stat.Starttime)),
+		Name:      stat.Comm,
+		PID:       p.PID(),
+		PPID:      stat.PPID,
+		CWD:       cwd,
+		Exe:       exe,
+		Args:      args,
+		StartTime: bootTime.Add(ticksToDuration(stat.Starttime)),
+		Session:   stat.Session,
+		PGRP:      stat.PGRP,
+		TPGID:     stat.TPGID,
+		TTY:       stat.TTY,
 	}
 
 	return *p.info, nil
